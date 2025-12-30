@@ -1,6 +1,5 @@
 // #region import
 import { getAuth, signInWithPopup, GoogleAuthProvider, type Auth } from "firebase/auth";
-import { initializeApp, type FirebaseApp } from "firebase/app";
 import { 
   collection, 
   doc, 
@@ -17,23 +16,13 @@ import {
   onSnapshot
 } from "firebase/firestore";
 import React, { type Key } from "react";
-import { type ExpenditureProps, type InputedExpenditure, type UpdatedExpenditure } from "./types/index.js";
+import { type ExpenditureProps, type InputedExpenditure, type UpdatedExpenditure } from "./types/index.ts";
 import { Timestamp } from "firebase/firestore";
+import { ImageOcrComponent } from "./features/image-ocr/components/components";
+import {app, db} from "./firebase"
 // #endregion
 
-// #region firebase初期設定
-const firebaseConfig = {
-  apiKey: "AIzaSyDHG2ss9kIcNNf8Mg5A12FxpSaXRM7mBOE",
-  authDomain: "kakeibo-kaka1166.firebaseapp.com",
-  projectId: "kakeibo-kaka1166",
-  storageBucket: "kakeibo-kaka1166.firebasestorage.app",
-  messagingSenderId: "372779745836",
-  appId: "1:372779745836:web:4c860ac607c5583648c789"
-};
 
-let app: FirebaseApp = initializeApp(firebaseConfig);
-let db = getFirestore(app);
-// #endregion
 
 // #region 認証機能の実装
 //初期設定  
@@ -303,6 +292,10 @@ function App() {
   return (
     <div>
       <button type='submit' onClick={handleLogin}>ログイン</button>
+
+      <div>
+        <ImageOcrComponent />
+      </div>
 
       {/* 支出入力フォーム */}
       <div>

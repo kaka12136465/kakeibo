@@ -1,4 +1,6 @@
+import { type FirebaseApp } from "firebase/app";
 import { type ExpenditureProps, type InputedExpenditure, type UpdatedExpenditure } from "./types/index.js";
+export declare let app: FirebaseApp;
 export declare const createExpenditure: (expenditure: InputedExpenditure) => Promise<string>;
 export declare const readExpenditure: (id: string) => Promise<ExpenditureProps | null>;
 export declare const getAllExpenditures: () => Promise<ExpenditureProps[]>;
